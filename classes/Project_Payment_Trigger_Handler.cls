@@ -89,13 +89,15 @@ public without sharing class Project_Payment_Trigger_Handler {
         objectsToUpdate.addAll(contactsToUpdate);
         objectsToUpdate.addAll(projectsToUpdate);
         
-        //try{
+        try{
             update objectsToUpdate;
-        /*}
+        }
         catch(DMLException e){
             //Normally a custom exception that sends an email out to designated admins would be included here
-            //Skipping for purposes of this code exercise            
-        }*/
+            //Skipping for purposes of this code exercise
+            system.debug('error occurred updating project payment rollups---' + e.getMessage());
+			system.debug('stacktrace---' + e.getStackTraceString());
+        }
         
     }
     
