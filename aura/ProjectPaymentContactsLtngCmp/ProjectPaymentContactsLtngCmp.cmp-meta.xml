@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <description>The component will be deployed as a tab on a Lightning app, that lists all Contacts that have made at least one Project Payment to any Project.</description>
+</AuraDefinitionBundle>

@@ -1,0 +1,35 @@
+<aura:component controller="InputLookupAuraController">
+    <ltng:require scripts="/resource/Lgt_InputLookup/js/jquery-2.2.4.min.js, /resource/Lgt_InputLookup/js/bootstrap.min.js"/>
+
+    <aura:attribute name="type" type="String" description="Sobject Type" required="true" />
+    <aura:attribute name="value" type="String" description="Source / Destination value" />
+    <aura:attribute name="unicId" type="String" description="unic name" required="true" />
+    <aura:attribute name="searchValues" type="SObject[]" />
+    <aura:attribute name="activeRecordId" type="String" /> 
+    <aura:attribute name="activeRecordName" type="String" />
+	<aura:attribute name="recName" type="String"/>
+    <!-- PRIVATE ATTRS -->
+    <aura:attribute name="nameValue" type="String" description="Name of the current lookup 'name' field: loaded by controller" />
+    <aura:attribute name="isLoading" type="Boolean" description="Loading component" default="true" />
+
+	<aura:handler name="change" value="{!v.value}" action="{!c.valueChange}"/>
+	<aura:handler name="init" value="{!this}" action="{!c.valueChange}" />
+
+
+    <div Class="{!v.unicId +'_typeahead_item'}">
+        <input id="{!v.unicId +'_typeahead'}" type="text" class="slds-input payor" onkeyup="{!c.onInputKeyUp}" value="{!v.recName}" />
+        <div class="search-icon"><lightning:icon iconName="utility:search" alternativeText="search" size="small"/></div>
+		<div class="remove-text-icon" onclick="{!c.clearText}" data-id="{!v.unicId +'_typeahead'}" Title="Clear text field">
+			<lightning:icon iconName="utility:clear" alternativeText="clear" size="x-small"/>
+		</div>
+        <div class="tt-menu">
+            <ul class="tt-dataset" style="display:none;">
+                <aura:iteration items="{!v.searchValues}" var="record">
+                    <li class="{!'tt-suggestion' + (v.activeRecordId == record.Id ? ' is-active' : '')}" title="{!record.Name}">
+                        <span data-id="{!record.Id}" data-name="{!record.Name}" onclick="{!c.onRecordClick}">{!record.Name}</span>
+                    </li>
+                </aura:iteration>
+            </ul>
+        </div>
+    </div> 
+</aura:component>

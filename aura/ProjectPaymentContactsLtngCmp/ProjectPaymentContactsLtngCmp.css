@@ -1,0 +1,50 @@
+/*********** General style ***********/
+.THIS .inline {
+    display:inline-block;
+    width: 25%;
+    font-size: 20px;
+    margin-bottom: 10px; 
+}
+
+/*********** Spinner style ***********/
+@keyframes spinner {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.THIS #spinnerContent {
+    display: none;
+	position: fixed;
+	background-color: rgba(255,255,255,0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	top: 0;
+	left: 0;
+} 
+
+.THIS #spinnerContent .CRspinner {
+	content: '';
+	box-sizing: border-box;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 50px;
+	height: 50px;
+	margin-top: -10px;
+	margin-left: -10px;
+	border-radius: 50%;
+	border: 5px solid transparent;
+	border-top-color: #0078D7;
+	animation: spinner .6s linear infinite;
+	z-index: 101;
+}
+
+.THIS .slds-accordion__content {
+    display:none;
+}
+
+.THIS .rotate {
+    transform: rotate(90deg);
+}
